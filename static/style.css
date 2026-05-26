@@ -1,0 +1,63 @@
+* {
+    font-family: "Roboto Slab", serif;
+    color: var(--font-color);
+}
+
+:root {
+    --light-font-color: #9a9994;
+    --orange-darker-5: #ef391a;
+    --font-color: #4e443c;
+    --main-bg: #f0efe7;
+    --orange: #f14e32
+}
+
+
+
+html {
+    background-color: var(--main-bg);
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+.container__center_content {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.text_button {
+    gap: 30px;
+}
+.question_section_none {
+    display: none;
+}
+.question_section_on {
+    display: flex;
+}
+
+.img_logo {
+    width: 100%;
+    object-fit: contain;
+    height: 100px;
+}
+
+.button {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    background-color: var(--orange);
+    color: #fff;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--orange-darker-5);
+}
