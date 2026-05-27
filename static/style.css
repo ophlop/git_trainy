@@ -8,7 +8,8 @@
     --orange-darker-5: #ef391a;
     --font-color: #4e443c;
     --main-bg: #f0efe7;
-    --orange: #f14e32
+    --orange: #f14e32;
+    --white-color: #fff;
 }
 
 
@@ -36,7 +37,10 @@ html {
     display: none;
 }
 .question_section {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .img_logo {
@@ -60,4 +64,14 @@ html {
 
 .button:hover {
     background-color: var(--orange-darker-5);
+}
+
+#answer_input {
+    background-color: initial;
+    width: 50%;
+    padding: 10px;
+    background-color: var(--white-color);
+    outline: 1px solid var(--bg-color);
+    border-radius: 4px;
+    font-size: 16px;
 }
