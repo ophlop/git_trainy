@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require('fs');
 const path = require('path');
+const questions = require('./data/question.json');
 
 const PORT = 8000;
 
@@ -36,7 +37,7 @@ const app = http.createServer((req, res) => {
         }
     }
 
-    if (req.url.includes('/api/')) {
+    if (req.url.startsWith('/api/')) {
         if (req.method === 'POST') {
             let body = '';
             let parsedData;

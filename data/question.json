@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "question": "Как инициализировать git в проекте?",
+        "answer": "git init",
+        "aliases": []
+    },
+    {
+        "id": 2,
+        "question": "Как добавить файл в staging?",
+        "answer": "git add <file>",
+        "aliases": []
+    },
+    {
+        "id": 3,
+        "question": "Как закоммитить изменения?",
+        "answer": "git commit -m 'message'",
+        "aliases": []
+    },
+    {
+        "id": 4,
+        "question": "Как посмотреть статус?",
+        "answer": "git status",
+        "aliases": []
+    },
+    {
+        "id": 5,
+        "question": "Как посмотреть историю коммитов?",
+        "answer": "git log",
+        "aliases": []
+    },
+    {
+        "id": 6,
+        "question": "Как создать новую ветку?",
+        "answer": "git branch <name>",
+        "aliases": []
+    },
+    {
+        "id": 7,
+        "question": "Как переключиться на ветку?",
+        "answer": "git checkout <name>",
+        "aliases": []
+    },
+    {
+        "id": 8,
+        "question": "Как создать и переключиться сразу?",
+        "answer": "git checkout -b <name>",
+        "aliases": []
+    },
+    {
+        "id": 9,
+        "question": "Как отправить изменения в удаленный репозиторий?",
+        "answer": "git push",
+        "aliases": []
+    },
+    {
+        "id": 10,
+        "question": "Как получить изменения?",
+        "answer": "git pull",
+        "aliases": []
+    },
+    {
+        "id": 11,
+        "question": "Как слить ветку в текущую?",
+        "answer": "git merge <branch>",
+        "aliases": []
+    },
+    {
+        "id": 12,
+        "question": "Как отменить изменения в файле (до commit)?",
+        "answer": "git checkout -- <file>",
+        "aliases": []
+    },
+    {
+        "id": 13,
+        "question": "Как убрать файл из staging?",
+        "answer": "git reset <file>",
+        "aliases": []
+    },
+    {
+        "id": 14,
+        "question": "Как изменить последний commit?",
+        "answer": "git commit --amend",
+        "aliases": []
+    },
+    {
+        "id": 15,
+        "question": "Как перебазировать ветку?",
+        "answer": "git rebase <branch>",
+        "aliases": []
+    },
+    {
+        "id": 16,
+        "question": "Как посмотреть разницу между коммитами?",
+        "answer": "git diff",
+        "aliases": []
+    },
+    {
+        "id": 17,
+        "question": "Как откатиться к предыдущему коммиту?",
+        "answer": "git reset --hard <commit>",
+        "aliases": []
+    },
+    {
+        "id": 18,
+        "question": "Как временно сохранить изменения?",
+        "answer": "git stash",
+        "aliases": []
+    },
+    {
+        "id": 19,
+        "question": "Как вернуть stash?",
+        "answer": "git stash pop",
+        "aliases": []
+    },
+    {
+        "id": 20,
+        "question": "Как удалить ветку?",
+        "answer": "git branch -d <name>",
+        "aliases": []
+    },
+    {
+        "id": 21,
+        "question": "Как принудительно отправить изменения?",
+        "answer": "git push --force",
+        "aliases": []
+    },
+    {
+        "id": 22,
+        "question": "Как посмотреть, кто менял строки?",
+        "answer": "git blame",
+        "aliases": []
+    },
+    {
+        "id": 23,
+        "question": "Как найти коммит по строке?",
+        "answer": "git log -S 'text'",
+        "aliases": []
+    },
+    {
+        "id": 24,
+        "question": "Как отменить commit, не ломая историю?",
+        "answer": "git revert <commit>",
+        "aliases": []
+    }
+]
