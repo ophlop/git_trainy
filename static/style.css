@@ -35,7 +35,7 @@ html {
 .question_section_none {
     display: none;
 }
-.question_section_on {
+.question_section {
     display: flex;
 }
 
