@@ -61,8 +61,7 @@ const app = http.createServer((req, res) => {
                         answer.text = 'Wrong answer!'; 
                     }
 
-                    res.write(JSON.stringify(answer));
-                    res.end();
+                    res.end(JSON.stringify(answer));
                 }
             });
 
@@ -72,8 +71,7 @@ const app = http.createServer((req, res) => {
         if (req.method === 'GET') {
             if (req.url.includes('random_question')) {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.write(JSON.stringify({id: 1, question: 'How we can start work with git in project?'}));
-                res.end();
+                res.end(JSON.stringify({id: 1, question: 'How we can start work with git in project?'}));
             }
         }
 
