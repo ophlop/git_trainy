@@ -4,9 +4,9 @@ const path = require('path');
 const questions = require('./data/question.json');
 
 const returnRandomQuestion = () => {
-    const randomNumber = Math.floor(Math.random() * 24) + 1;
+    const randomIndex = Math.floor(Math.random() * questions.length) + 1;
 
-    return questions.find(elem => elem.id === randomNumber);
+    return questions[randomIndex];
 }
 
 const PORT = 8000;
@@ -55,17 +55,11 @@ const app = http.createServer((req, res) => {
             req.on('end', function () {
                 parsedData = JSON.parse(body);
 
-                console.log(parsedData);
-
                 if (req.url.includes('check_answer')) {
                     let answer = {};
                     let questionAnswer = questions.find(elem => elem.id == parsedData.id).answer
                     res.writeHead(200, { 'Content-Type': 'application/json' });
-                    
-                    console.log(questions.find(elem => elem.id));
-                    console.log(parsedData.answer);
-                    console.log(questionAnswer);
-                    console.log(parsedData.answer == questionAnswer);
+
                     
                     if (parsedData.answer == questionAnswer) {
                         answer.status = 'good';
