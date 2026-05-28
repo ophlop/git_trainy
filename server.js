@@ -3,6 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const questions = require('./data/question.json');
 
+const returnRandomQuestion = () => {
+    const randomNumber = Math.floor(Math.random() * 24) + 1;
+
+    return questions.find(elem => elem.id === randomNumber);
+}
+
 const PORT = 8000;
 
 const app = http.createServer((req, res) => {
@@ -53,12 +59,19 @@ const app = http.createServer((req, res) => {
 
                 if (req.url.includes('check_answer')) {
                     let answer = {};
+                    let questionAnswer = questions.find(elem => elem.id == parsedData.id).answer
                     res.writeHead(200, { 'Content-Type': 'application/json' });
-                    if (parsedData.answer == 'git init') {
-                        answer.status = 'Good';
+                    
+                    console.log(questions.find(elem => elem.id));
+                    console.log(parsedData.answer);
+                    console.log(questionAnswer);
+                    console.log(parsedData.answer == questionAnswer);
+                    
+                    if (parsedData.answer == questionAnswer) {
+                        answer.status = 'good';
                         answer.text = 'Right answer!'; 
                     } else {
-                        answer.status = 'Bad'
+                        answer.status = 'bad'
                         answer.text = 'Wrong answer!'; 
                     }
 
@@ -72,7 +85,7 @@ const app = http.createServer((req, res) => {
         if (req.method === 'GET') {
             if (req.url.includes('random_question')) {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({id: 1, question: 'How we can start work with git in project?'}));
+                res.end(JSON.stringify(returnRandomQuestion()));
             }
         }
 
