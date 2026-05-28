@@ -59,7 +59,7 @@ const app = http.createServer((req, res) => {
                     let answer = {};
                     let questionAnswer = questions.find(elem => elem.id == parsedData.id).answer;
 
-                    if (!question) {
+                    if (!questionAnswer) {
                         res.writeHead(400)
                         res.end(JSON.stringify({ error: 'Question not found' }))
                         return
