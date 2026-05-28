@@ -57,7 +57,7 @@ const app = http.createServer((req, res) => {
 
                 if (req.url.includes('check_answer')) {
                     let answer = {};
-                    let questionAnswer = questions.find(elem => elem.id == parsedData.id).answer;
+                    let questionAnswer = questions.find(elem => elem.id == parsedData.id)?.answer;
 
                     if (!questionAnswer) {
                         res.writeHead(400)
