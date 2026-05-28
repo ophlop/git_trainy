@@ -4,7 +4,7 @@ const path = require('path');
 const questions = require('./data/question.json');
 
 const returnRandomQuestion = () => {
-    const randomIndex = Math.floor(Math.random() * questions.length) + 1;
+    const randomIndex = Math.floor(Math.random() * questions.length);
 
     return questions[randomIndex];
 }
