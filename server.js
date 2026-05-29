@@ -5,10 +5,10 @@ const url = require('url');
 const questions = require('./data/question.json');
 
 const returnRandomQuestion = (ids) => {
-    var editQuestions = [...questions];
+    const editQuestions = [...questions];
 
     if (!!ids) {
-        var arrIds = ids.split(",");
+        const arrIds = ids.split(",");
 
         editQuestions = editQuestions.filter(e => !arrIds.includes(String(e.id)));
     }
