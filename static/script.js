@@ -53,6 +53,8 @@ answerButton.addEventListener('click', async () => {
 
 async function getRandomQuestion () {
     try {
+        let params = '';
+
         startButton.hidden = true;
         nextButton.hidden = true;
         questionParagraph.hidden = true;
@@ -61,19 +63,53 @@ async function getRandomQuestion () {
         answerInput.value = '';
         answerInput.disabled = false;
 
-        const res = await fetch('/api/random_question')
+        const answersId = localStorage.getItem('answersId');
+        if (!!answersId) {
+            params = '?qIds=' + JSON.parse(answersId).map(e => {let str = ''; return str + e.id}).join(",");
+        }
+
+        const res = await fetch('/api/random_question' + params);
         currentQuestion = await res.json();
+
+        if (!!currentQuestion.isEnd && currentQuestion.isEnd == true) {
+            questionParagraph.textContent = "Вопросы кончились! Рестарт?"
+            questionParagraph.hidden = false;
+
+            nextButton.textContent = 'Restart';
+            nextButton.hidden = false;
+            answerInput.hidden = true;
+
+            localStorage.removeItem('answersId');
+
+            return;
+        } else {
+            answerInput.hidden = false;
+        }
+
+        saveAnswerToStorage('answersId', currentQuestion);
             
         questionParagraph.textContent = 'q: ' + currentQuestion.question;
 
         questionParagraph.hidden = false;
         answerButton.disabled = false;
         answerButton.hidden = false;
-        
 
         queSection.classList.remove('question_section_none');
         queSection.classList.add('question_section');
     } catch (err) {
         console.error('Failed to load question:', err);
     }
+}
+
+function saveAnswerToStorage (attr, value) {
+    let arr = [];
+    let obj = localStorage.getItem(attr);
+
+    if (!!obj) {
+        arr = arr.concat(JSON.parse(obj));
+    }
+
+    arr.push(value);
+
+    localStorage.setItem(attr, JSON.stringify(arr));
 }
