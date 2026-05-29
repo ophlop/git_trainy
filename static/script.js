@@ -59,6 +59,7 @@ async function getRandomQuestion () {
         nextButton.hidden = true;
         questionParagraph.hidden = true;
         answerParagraph.hidden = true;
+        answerParagraph.classList.remove('good', 'bad')
 
         answerInput.value = '';
         answerInput.disabled = false;
