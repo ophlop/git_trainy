@@ -1,12 +1,27 @@
 const http = require("http");
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 const questions = require('./data/question.json');
 
-const returnRandomQuestion = () => {
-    const randomIndex = Math.floor(Math.random() * questions.length);
+const returnRandomQuestion = (ids) => {
+    var editQuestions = [...questions];
 
-    return questions[randomIndex];
+    if (!!ids) {
+        var arrIds = ids.split(",");
+
+        editQuestions = editQuestions.filter(e => !arrIds.includes(String(e.id)));
+    }
+
+    console.log(editQuestions.length);
+
+    if (editQuestions.length == 0) {
+        return {questions: "", isEnd: true};
+    }
+
+    const randomIndex = Math.floor(Math.random() * editQuestions.length);
+
+    return editQuestions[randomIndex];
 }
 
 const PORT = 8000;
@@ -85,8 +100,11 @@ const app = http.createServer((req, res) => {
 
         if (req.method === 'GET') {
             if (req.url.includes('random_question')) {
+                const parsedUrl = url.parse(req.url, true);
+                const query = parsedUrl.query; 
+
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify(returnRandomQuestion()));
+                res.end(JSON.stringify(returnRandomQuestion(query.qIds)));
             }
         }
 
