@@ -1,5 +1,4 @@
 const { checkAnswer, getRandomQuestion } = require('../controllers/questionController');
-const url = require('url');
 
 module.exports = (req, res) => {
     if (req.method === 'POST' && req.url.includes('check_answer')) {
@@ -7,8 +6,9 @@ module.exports = (req, res) => {
     }
 
     if (req.method === 'GET' && req.url.includes('random_question')) {
-        const parsedUrl = url.parse(req.url, true);
-        return getRandomQuestion(req, res, parsedUrl.query);
+        const parsedUrl = new URL(req.url, 'http://localhost');
+        const qIds = parsedUrl.searchParams.get('qIds');
+        return getRandomQuestion(req, res, qIds);
     }
 
     res.writeHead(404);

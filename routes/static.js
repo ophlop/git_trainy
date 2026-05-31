@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+
+
 module.exports = (req, res) => {
     if (req.method !== 'GET') {
         res.writeHead(405);
@@ -8,14 +10,21 @@ module.exports = (req, res) => {
     }
 
     if (req.url.startsWith('/static/')) {
-        const filePath = path.join(__dirname, '..', req.url);
-        const ext = path.extname(filePath);
+        const safePath = path.join(__dirname, '..', req.url);
+        const baseDir = path.join(__dirname, '..', 'static');
+
+        if (!safePath.startsWith(baseDir)) {
+            res.writeHead(403);
+            return res.end();
+        }
+
+        const ext = path.extname(safePath);
 
         const contentType = ext === '.css'
             ? 'text/css'
             : 'text/html';
 
-        fs.readFile(filePath, (err, content) => {
+        fs.readFile(safePath, (err, content) => {
             if (err) {
                 res.writeHead(404);
                 return res.end();

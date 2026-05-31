@@ -9,7 +9,7 @@ module.exports = (ids) => {
     }
 
     if (editQuestions.length === 0) {
-        return { questions: "", isEnd: true };
+        return { question: "", isEnd: true };
     }
 
     const randomIndex = Math.floor(Math.random() * editQuestions.length);

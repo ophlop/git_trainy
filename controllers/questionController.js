@@ -9,7 +9,13 @@ const checkAnswer = (req, res) => {
     });
 
     req.on('end', () => {
-        const parsedData = JSON.parse(body);
+        let parsedData;
+        try {
+            parsedData = JSON.parse(body);
+        } catch (e) {
+            res.writeHead(400);
+            return res.end(JSON.stringify({ error: 'Invalid JSON' }));
+        }
 
         const question = questions.find(q => q.id == parsedData.id);
 
@@ -28,8 +34,8 @@ const checkAnswer = (req, res) => {
     });
 };
 
-const getRandomQuestion = (req, res, query) => {
-    const result = getRandom(query.qIds);
+const getRandomQuestion = (req, res, qIds) => {
+    const result = getRandom(qIds);
 
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));

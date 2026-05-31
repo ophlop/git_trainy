@@ -57,6 +57,7 @@ async function getRandomQuestion () {
 
         startButton.hidden = true;
         nextButton.hidden = true;
+        nextButton.disabled = true;
         questionParagraph.hidden = true;
         answerParagraph.hidden = true;
         answerParagraph.classList.remove('good', 'bad')
@@ -78,6 +79,7 @@ async function getRandomQuestion () {
 
             nextButton.textContent = 'Restart';
             nextButton.hidden = false;
+            nextButton.disabled = false;
             answerInput.hidden = true;
 
             localStorage.removeItem('answersId');
@@ -99,6 +101,8 @@ async function getRandomQuestion () {
         queSection.classList.add('question_section');
     } catch (err) {
         console.error('Failed to load question:', err);
+        nextButton.disabled = false;
+        nextButton.hidden = false;
     }
 }
 
