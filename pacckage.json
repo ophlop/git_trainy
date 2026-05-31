@@ -1,0 +1,10 @@
+{
+    "name": "git-trainy",
+    "version": "0.1.0",
+    "description": "Git commands trainer",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "node --test tests/getRandomQuestion.test.js"
+    }
+}
